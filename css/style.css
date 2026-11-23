@@ -1,0 +1,887 @@
+
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --background: #101010;
+    --surface: #181818;
+    --surface-light: #222222;
+    --text: #f2f0eb;
+    --text-muted: #a5a29c;
+    --accent: #c49a63;
+    --accent-hover: #dfb783;
+    --border: rgba(255, 255, 255, 0.09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    width: 100%;
+    padding: 110px 9%;
+}
+
+
+/* =========================================
+   2. NAVEGAÇÃO
+========================================= */
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(16, 16, 16, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    max-width: 1440px;
+    height: 82px;
+    margin: auto;
+    padding: 0 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-links a {
+    position: relative;
+    color: var(--text-muted);
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent);
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 27px;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   3. TÍTULOS E ELEMENTOS GERAIS
+========================================= */
+
+.section-label {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.2;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.section-description {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 650px;
+}
+
+
+/* =========================================
+   4. BOTÕES
+========================================= */
+
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 13px 22px;
+    font-size: 12px;
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #101010;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   5. PÁGINA INICIAL
+========================================= */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 60px;
+    max-width: 1440px;
+    min-height: 100vh;
+    margin: auto;
+    padding-top: 150px;
+
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(196, 154, 99, 0.08),
+            transparent 35%
+        ),
+        var(--background);
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 4.8vw, 68px);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 490px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    position: relative;
+    max-width: 390px;
+    width: 100%;
+    margin: auto;
+}
+
+.image-frame {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 180px 180px 12px 12px;
+    border: 1px solid rgba(196, 154, 99, 0.4);
+}
+
+.image-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--accent);
+    border-radius: 180px 180px 12px 12px;
+    top: 18px;
+    left: 18px;
+    opacity: 0.4;
+}
+
+
+/* =========================================
+   6. SOBRE MIM
+========================================= */
+
+.sobre {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+    gap: 80px;
+    background: var(--surface);
+}
+
+.sobre-image {
+    width: 100%;
+    max-width: 420px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.sobre-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sobre-content {
+    max-width: 650px;
+}
+
+.sobre-content p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.sobre-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+}
+
+.sobre-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.detail-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    color: var(--accent);
+}
+
+
+/* =========================================
+   7. MINHA TRAJETÓRIA
+========================================= */
+
+.trajetoria {
+    background: var(--background);
+}
+
+.trajetoria-header {
+    margin-bottom: 55px;
+}
+
+.timeline {
+    max-width: 850px;
+    border-left: 1px solid rgba(196, 154, 99, 0.5);
+    margin-left: 10px;
+    padding-left: 35px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    background: var(--accent);
+    border-radius: 50%;
+    left: -41px;
+    top: 5px;
+}
+
+.timeline-date {
+    display: block;
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.timeline-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 650px;
+}
+
+
+/* =========================================
+   8. PROJETOS
+========================================= */
+
+.projetos {
+    background: var(--surface);
+}
+
+.projetos-header {
+    margin-bottom: 50px;
+}
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    align-items: stretch;
+}
+
+.projeto-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.projeto-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--accent);
+}
+
+.projeto-image {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    background: var(--surface-light);
+}
+
+.projeto-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.projeto-card:hover .projeto-image img {
+    transform: scale(1.05);
+}
+
+.projeto-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    padding: 25px;
+}
+
+.projeto-category {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+.projeto-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 12px 0;
+}
+
+.projeto-info p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.projeto-tecnologias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 22px;
+}
+
+.projeto-tecnologias span {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--accent);
+    font-size: 11px;
+}
+
+.projeto-info .projeto-link {
+    color: var(--accent);
+    font-size: 12px;
+    margin-top: auto;
+    transition: color 0.3s ease;
+}
+
+.projeto-info .projeto-link:hover {
+    color: var(--text);
+}
+
+.projetos-footer {
+    margin-top: 45px;
+    text-align: center;
+}
+
+
+/* PROJETO EM DESENVOLVIMENTO */
+
+.projeto-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #181818, #25211c);
+}
+
+.projeto-placeholder span {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.projeto-status {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-style: italic;
+    margin-top: auto;
+}
+
+
+/* =========================================
+   9. MINHAS REDES
+========================================= */
+
+.contato {
+    text-align: center;
+    background: var(--background);
+    padding: 100px 9%;
+}
+
+.contato-content {
+    max-width: 650px;
+    margin: auto;
+}
+
+.contato-content p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.contato-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.contato-social a {
+    padding: 12px 22px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+.contato-social a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   10. RODAPÉ
+========================================= */
+
+footer {
+    padding: 45px 9%;
+    background: #0b0b0b;
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-content p {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.footer-content > span {
+    color: #777;
+    font-size: 11px;
+}
+
+
+/* =========================================
+   11. ANIMAÇÕES
+========================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   12. RESPONSIVIDADE - TABLETS
+========================================= */
+
+@media (max-width: 1000px) {
+
+    section {
+        padding: 95px 7%;
+    }
+
+    .navbar {
+        padding: 0 7%;
+    }
+
+    .nav-links {
+        gap: 22px;
+    }
+
+    .hero {
+        gap: 35px;
+    }
+
+    .sobre {
+        gap: 45px;
+    }
+
+    .projetos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   13. RESPONSIVIDADE - CELULARES
+========================================= */
+
+@media (max-width: 768px) {
+
+    html {
+        scroll-padding-top: 85px;
+    }
+
+    section {
+        padding: 85px 7%;
+    }
+
+    /* NAVEGAÇÃO */
+
+    .navbar {
+        position: relative;
+        height: 72px;
+        padding: 0 7%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        padding: 25px 7%;
+        background: #151515;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+
+    /* INÍCIO */
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 35px;
+        padding-top: 120px;
+    }
+
+    .hero-image {
+        order: -1;
+        max-width: 230px;
+    }
+
+    .hero-content {
+        order: 1;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 8vw, 46px);
+    }
+
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+
+    /* SOBRE MIM */
+
+    .sobre {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .sobre-image {
+        max-width: 100%;
+        height: 350px;
+    }
+
+    .sobre-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* PROJETOS */
+
+    .projetos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .projeto-info {
+        padding: 20px;
+    }
+
+    .projeto-info h3 {
+        font-size: 20px;
+    }
+
+}
+
+
+/* =========================================
+   14. RESPONSIVIDADE - CELULARES PEQUENOS
+========================================= */
+
+@media (max-width: 520px) {
+
+    .section-title {
+        font-size: 34px;
+    }
+
+    .hero {
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons a {
+        text-align: center;
+    }
+
+    .sobre-image {
+        height: 300px;
+    }
+
+    .projetos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projeto-image {
+        height: 220px;
+    }
+
+    .contato-social {
+        flex-direction: column;
+    }
+
+    .contato-social a {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .timeline {
+        padding-left: 25px;
+    }
+
+    .timeline-item::before {
+        left: -31px;
+    }
+
+}
+
+
+/* =========================================
+   15. ACESSIBILIDADE
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .projeto-card,
+    .projeto-image img,
+    .contato-social a,
+    .btn-primary,
+    .btn-secondary {
+        transition: none;
+    }
+
+}
